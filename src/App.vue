@@ -3,37 +3,62 @@ import { ref } from 'vue';
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
-    <div class="container-fluid">
-      <router-link to="/" class="navbar-brand">Pokedex</router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link to="/" class="nav-link" aria-current="page">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/about" class="nav-link">About</router-link>
-          </li>
-        </ul>
+  <header class="cabecalho">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
+      <div class="container-fluid">
+        <router-link to="/" class="navbar-brand">Pokedex</router-link>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link to="/" class="nav-link" aria-current="page">Home</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/about" class="nav-link">About</router-link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <div class="main">
     <RouterView></RouterView>
   </div>  
 
-  <footer class="bg-dark text-light">
+  <footer class="bg-dark text-light rodape">
     <div> Unimar | ADS {{ new Date().getFullYear() }}</div>
   </footer>
 
 </template>
 
 <style>
-footer {
+.cabecalho {
+    grid-area: cabecalho;
+    display: contents;
+}
+
+.principal {
+    grid-area: principal;
+    height: calc(100vh - 110px);
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.conteudo {
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.rodape {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -42,4 +67,5 @@ footer {
   justify-content: center;
   height: 56px;
 }
+
 </style>

@@ -1,6 +1,14 @@
 # Pokedex
 
-Este modelo deve ajudar você a começar a desenvolver com o Vue 3 no Vite.
+Nesse projeto estarei usando a Api PokeAPI v2 
+Site: https://pokeapi.co/docs/v2 
+
+# Descrição
+
+Curso: SUPERIOR DE TECNOLOGIA EM ANALISE E DESENVOLVIMENTO DE SISTEMAS 
+Matéria: DESENVOLV DE APLICACOES P/ A INTERNET 04A-2023/2 
+Aluno: Victor Marinelli Montanari RA: 1950936 
+Objetivo: Criar uma pokedex com utilizando o máximo de informação da API. Com objetivo de estudar como funciona a api e treinar a criação de um front-end responsivo suando bootstrap. 
 
 ## Configuração Recomendada do IDE
 
