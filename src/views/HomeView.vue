@@ -17,9 +17,9 @@ onMounted(() => {
 
 </script>
 <template>
-  <main>
-    <div class="container">
-      <div class="row mt-4">
+  <main class="principal">
+    <div class="container conteudo">
+      <div class="row">
         <div class="col">
             <div class="card text-center">
               <div class="card-body row g-3">
