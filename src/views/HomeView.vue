@@ -7,7 +7,7 @@ let caseUrlSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/s
 let pokemons = reactive(ref());
 
 onMounted(() => {
-  fetch("https://pokeapi.co/api/v2/pokemon/?limit=21&offset=0")
+  fetch("https://pokeapi.co/api/v2/pokemon/?limit=493&offset=0")
   .then(response => response.json())
   .then(response => {
     pokemons.value = response.results;
