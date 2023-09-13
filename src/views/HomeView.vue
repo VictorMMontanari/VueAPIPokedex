@@ -3,7 +3,7 @@ import { onMounted, reactive, ref } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
 
 // Professor ---->
-let caseUrlSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
+// let caseUrlSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
 let pokemons = reactive(ref());
 
 onMounted(() => {
