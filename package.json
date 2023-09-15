@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap-vue": "^2.23.1",
     "vue": "^3.3.4",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
