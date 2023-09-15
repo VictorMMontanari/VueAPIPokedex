@@ -61,7 +61,6 @@ import { ref } from 'vue';
 .conteudo2 {
     position: relative;
     padding: 10px;
-    width: 28.3%;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
     text-align: center;
     margin-bottom: 10px;
