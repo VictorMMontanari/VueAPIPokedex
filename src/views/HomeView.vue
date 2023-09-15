@@ -23,30 +23,31 @@ const filteredItems = computed(() => {
 
 <template>
   <main class="principal">
-    <div class="container mt-4">
-      <form>
-        <div class="form-group">
-          <label for="campoTexto">Texto:</label>
-          <input
-            id="inline-form-input-name"
-            class="mb-2 mr-sm-2 mb-sm-0"
-            placeholder="Nome do Pokemon"
-            v-model="search"
-          />
+    <div class="container conteudo">
+      <div class="conteudo2">
+        <form class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
+          <input id="inline-form-input-name" class="form-control mb-2 mb-sm-0 mr-sm-2" placeholder="Nome do Pokemon"
+            v-model="search" />
+        </div>
+        <div class="col-12">
+          <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+          <select class="form-select" id="inlineFormSelectPref">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
       </form>
-    </div>
-    <div class="container conteudo">
+      </div>
+      
       <div class="row">
         <div class="col">
           <div class="card text-center">
             <div class="card-body row g-3">
-              <ListPokemons
-                v-for="pokemon in filteredItems"
-                :key="pokemon.name"
-                :name="pokemon.name"
-                :url="pokemon.url"
-              />
+              <ListPokemons v-for="pokemon in filteredItems" :key="pokemon.name" :name="pokemon.name"
+                :url="pokemon.url" />
             </div>
           </div>
         </div>
