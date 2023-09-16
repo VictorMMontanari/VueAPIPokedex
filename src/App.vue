@@ -67,6 +67,15 @@ import { ref } from 'vue';
     border-radius: 10px;
 }
 
+.conteudo3 {
+    position: relative;
+    padding: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }
