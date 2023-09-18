@@ -67,19 +67,29 @@ function filterPokemonByType() {
             {{ formatType(typeName) }}
           </span>
         </div>
-        <img
-          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${idpk}.gif`"
-          class=""
-          width="39"
-          alt="..."
-        />
-        <h6 class="th4">{{ `#${idpk.toString().padStart(3, '0')}` }}</h6>
-        <img
-          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${idpk}.gif`"
-          class=""
-          width="39"
-          alt="..."
-        />
+        <div class="container text-center">
+          <div class="row">
+            <div class="col">
+              <img
+                :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${idpk}.gif`"
+                class=""
+                width="39"
+                alt="..."
+              />
+            </div>
+            <div class="col">
+              <h6 class="th4">{{ `#${idpk.toString().padStart(3, '0')}` }}</h6>
+            </div>
+            <div class="col">
+              <img
+                :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${idpk}.gif`"
+                class=""
+                width="39"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>    
       </div>
     </div>
   </div>
