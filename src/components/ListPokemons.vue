@@ -1,38 +1,6 @@
-<script setup>
-import { computed, ref, onMounted } from "vue";
-import { formatName, getTypeStyle, formatType} from "../functions/formatName";
-
-const props = defineProps(["name", "url"]);
-
-const urlParts = props.url.split("/");
-const idpk = urlParts[urlParts.length - 2];
-
-onMounted(() => {
-  fetch(props.url)
-    .then(response => response.json())
-    .then(data => {
-      pokemonDetails.value = data;
-    })
-    .catch(error => {
-      console.error("Erro ao buscar detalhes do Pokémon:", error);
-    });
-});
-
-const pokemonDetails = ref(null);
-
-const getTypes = computed(() => {
-  if (pokemonDetails.value && pokemonDetails.value.types && pokemonDetails.value.types.length > 0) {
-    return pokemonDetails.value.types.map((type) => type.type.name);
-  }
-  return ["Desconhecido"];
-});
-
-
-</script>
-
 <template>
   <div class="col-12 col-sm-4 col-md-3 col-lg-3">
-    <div class="card mb-3" style="height: 100%;">
+    <div class="card mb-3" style="height: 100%;" v-if="filterPokemonByType()">
       <h5 class="th4">{{ formatName(props.name) }}</h5>
       <img
         :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
@@ -55,7 +23,6 @@ const getTypes = computed(() => {
           width="39"
           alt="..."
         />
-        <!-- <a :href="props.url" target="_blank" class="btn btn-primary">Informações</a> -->
         <img
           :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${idpk}.gif`"
           class=""
@@ -66,6 +33,56 @@ const getTypes = computed(() => {
     </div>
   </div>
 </template>
+
+<script setup>
+import { computed, ref, onMounted } from "vue";
+import { formatName, getTypeStyle, formatType } from "../functions/formatName";
+import { selectedOption } from "../functions/TypePK.js"; // Substitua com o caminho correto para TypePK.js
+
+const props = defineProps(["name", "url"]);
+
+const urlParts = props.url.split("/");
+const idpk = urlParts[urlParts.length - 2];
+
+// Função que obtém os detalhes do Pokémon usando a URL
+const getPokemonDetails = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Erro ao buscar detalhes do Pokémon:", error);
+    return null;
+  }
+};
+
+const pokemonDetails = ref(null);
+
+onMounted(async () => {
+  // Carregar os detalhes do Pokémon usando a função getPokemonDetails
+  pokemonDetails.value = await getPokemonDetails(props.url);
+});
+
+const getTypes = computed(() => {
+  if (pokemonDetails.value && pokemonDetails.value.types && pokemonDetails.value.types.length > 0) {
+    return pokemonDetails.value.types.map((type) => type.type.name);
+  }
+  return ["Desconhecido"];
+});
+
+// Função de filtro de Pokémon com base no tipo selecionado
+function filterPokemonByType() {
+  if (selectedOption.value === 'ALL...') {
+    return true; // Retorna verdadeiro para exibir todos os Pokémon
+  } else {
+    const selectedType = selectedOption.value;
+    const types = getTypes.value;
+
+    // Verifica se pelo menos um dos tipos corresponde à opção selecionada
+    return types.includes(selectedType);
+  }
+}
+</script>
 
 <style>
 .th4 {

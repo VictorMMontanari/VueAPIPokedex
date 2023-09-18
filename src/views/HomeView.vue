@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
 import { calculateDisplayedPages } from '../functions/pagination.js';
+import { handleSelectedOption } from '../functions/TypePK.js';
 
 const limit = 20; // Número de resultados por página
 const search = ref('');
@@ -9,6 +10,7 @@ const currentPage = ref(1);
 let totalPokemonCount = 0;
 const allPokemons = ref([]);
 const displayedPages = calculateDisplayedPages(allPokemons, currentPage, limit);
+const selectedOption = ref('ALL...'); // Defina selectedOption aqui
 
 const displayedPokemons = computed(() => {
   const startIndex = (currentPage.value - 1) * limit;
@@ -39,8 +41,12 @@ const loadPage = (page) => {
   currentPage.value = page;
 };
 
-</script>
+// Use o watch aqui após a definição de selectedOption
+watch(selectedOption, (newValue) => {
+  handleSelectedOption(newValue);
+});
 
+</script>
 <template>
   <main class="principal">
     <div class="container conteudo">
@@ -50,15 +56,37 @@ const loadPage = (page) => {
             <input id="inline-form-input-name" class="form-control mb-2 mb-sm-0 mr-sm-2" placeholder="Nome do Pokemon"
               v-model="search" />
           </div>
+          <div class="col-12">
+            <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+            <select class="form-select" id="inlineFormSelectPref" v-model="selectedOption">
+              <option selected>ALL...</option>
+              <option value="bug">bug</option>
+              <option value="dragon">dragon</option>
+              <option value="electric">electric</option>
+              <option value="fairy">fairy</option>
+              <option value="fighting">fighting</option>
+              <option value="fire">fire</option>
+              <option value="flying">flying</option>
+              <option value="ghost">ghost</option>
+              <option value="grass">grass</option>
+              <option value="ground">ground</option>
+              <option value="ice">ice</option>
+              <option value="normal">normal</option>
+              <option value="poison">poison</option>
+              <option value="psychic">psychic</option>
+              <option value="rock">rock</option>
+              <option value="steel">steel</option>
+              <option value="water">water</option>
+            </select>
+          </div>
         </form>
       </div>
-
       <div class="row">
         <div class="col">
           <div class="card text-center">
             <div class="card-body row g-3">
               <ListPokemons v-for="pokemon in displayedPokemons" :key="pokemon.name" :name="pokemon.name"
-                :url="pokemon.url" />
+                :url="pokemon.url"/>
             </div>
           </div>
         </div>
@@ -133,5 +161,4 @@ const loadPage = (page) => {
   .pagination li:not(.active):not(.dots) {
     display: none;
   }
-}
-</style>
+}</style>
