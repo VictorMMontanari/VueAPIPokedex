@@ -2,7 +2,6 @@
 import { ref, onMounted, computed, watch } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
 import { calculateDisplayedPages } from '../functions/pagination.js';
-import { handleSelectedOption } from '../functions/TypePK.js';
 
 const limit = 20; // Número de resultados por página
 const search = ref('');
@@ -28,7 +27,7 @@ onMounted(() => {
 
 const loadAllPokemon = async () => {
   try {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=493');
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=1300');
     const data = await response.json();
     totalPokemonCount = data.count;
     allPokemons.value = data.results;
@@ -42,11 +41,37 @@ const loadPage = (page) => {
 };
 
 // Use o watch aqui após a definição de selectedOption
-watch(selectedOption, (newValue) => {
-  handleSelectedOption(newValue);
+watch(selectedOption, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    currentPage.value = 1; // Define a página atual de volta para 1
+    if (newValue === 'ALL...') {
+      loadAllPokemon();
+    } else {
+      loadPokemonByType(newValue);
+    }
+  }
 });
 
+const loadPokemonByType = async (type) => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+    const data = await response.json();
+    const pokemonList = data.pokemon.map((entry) => entry.pokemon);
+    
+    if (pokemonList.length > 493) {
+      const limitedPokemonList = pokemonList.slice(0, 493);
+      totalPokemonCount = limitedPokemonList.length;
+      allPokemons.value = limitedPokemonList;
+    } else {
+      totalPokemonCount = pokemonList.length;
+      allPokemons.value = pokemonList;
+    }
+  } catch (error) {
+    console.error('Erro ao carregar os Pokémon do tipo', type, error);
+  }
+};
 </script>
+
 <template>
   <main class="principal">
     <div class="container conteudo">
@@ -85,8 +110,8 @@ watch(selectedOption, (newValue) => {
         <div class="col">
           <div class="card text-center">
             <div class="card-body row g-3">
-              <ListPokemons v-for="pokemon in displayedPokemons" :key="pokemon.name" :name="pokemon.name"
-                :url="pokemon.url"/>
+              <ListPokemons v-for="pokemon in displayedPokemons" :key="pokemon.name" :name="pokemon.name" 
+            :url="pokemon.url"/>
             </div>
           </div>
         </div>

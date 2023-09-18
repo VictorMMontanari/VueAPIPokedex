@@ -1,39 +1,3 @@
-<template>
-  <div class="col-12 col-sm-4 col-md-3 col-lg-3">
-    <div class="card mb-3" style="height: 100%;" v-if="filterPokemonByType()">
-      <h5 class="th4">{{ formatName(props.name) }}</h5>
-      <img
-        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
-        class="card-img"
-        alt="..."
-      />
-      <div class="card-body text-center">
-        <div class="tipos">
-          <span
-            v-for="typeName in getTypes"
-            :key="typeName"
-            :class="['tipo', getTypeStyle(typeName)]"
-          >
-            {{ formatType(typeName) }}
-          </span>
-        </div>
-        <img
-          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${idpk}.gif`"
-          class=""
-          width="39"
-          alt="..."
-        />
-        <img
-          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${idpk}.gif`"
-          class=""
-          width="39"
-          alt="..."
-        />
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { computed, ref, onMounted } from "vue";
 import { formatName, getTypeStyle, formatType } from "../functions/formatName";
@@ -83,6 +47,43 @@ function filterPokemonByType() {
   }
 }
 </script>
+
+<template>
+  <div class="col-12 col-sm-4 col-md-3 col-lg-3">
+    <div class="card mb-3" style="height: 100%;" v-if="filterPokemonByType()">
+      <h5 class="th4">{{ formatName(props.name) }}</h5>
+      <img
+        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
+        class="card-img"
+        alt="..."
+      />
+      <div class="card-body text-center">
+        <div class="tipos">
+          <span
+            v-for="typeName in getTypes"
+            :key="typeName"
+            :class="['tipo', getTypeStyle(typeName)]"
+          >
+            {{ formatType(typeName) }}
+          </span>
+        </div>
+        <img
+          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${idpk}.gif`"
+          class=""
+          width="39"
+          alt="..."
+        />
+        <h6 class="th4">{{ `#${idpk.toString().padStart(3, '0')}` }}</h6>
+        <img
+          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${idpk}.gif`"
+          class=""
+          width="39"
+          alt="..."
+        />
+      </div>
+    </div>
+  </div>
+</template>
 
 <style>
 .th4 {
