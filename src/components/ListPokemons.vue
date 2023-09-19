@@ -1,14 +1,13 @@
 <script setup>
 import { computed, ref, onMounted } from "vue";
 import { formatName, getTypeStyle, formatType } from "../functions/formatName";
-import { selectedOption } from "../functions/TypePK.js"; // Substitua com o caminho correto para TypePK.js
-
+import { selectedOption } from "../functions/TypePK.js"; 
 const props = defineProps(["name", "url"]);
 
 const urlParts = props.url.split("/");
 const idpk = urlParts[urlParts.length - 2];
 
-// Função que obtém os detalhes do Pokémon usando a URL
+
 const getPokemonDetails = async (url) => {
   try {
     const response = await fetch(url);
@@ -23,7 +22,6 @@ const getPokemonDetails = async (url) => {
 const pokemonDetails = ref(null);
 
 onMounted(async () => {
-  // Carregar os detalhes do Pokémon usando a função getPokemonDetails
   pokemonDetails.value = await getPokemonDetails(props.url);
 });
 
@@ -34,15 +32,13 @@ const getTypes = computed(() => {
   return ["Desconhecido"];
 });
 
-// Função de filtro de Pokémon com base no tipo selecionado
+
 function filterPokemonByType() {
   if (selectedOption.value === 'ALL...') {
-    return true; // Retorna verdadeiro para exibir todos os Pokémon
+    return true; 
   } else {
     const selectedType = selectedOption.value;
     const types = getTypes.value;
-
-    // Verifica se pelo menos um dos tipos corresponde à opção selecionada
     return types.includes(selectedType);
   }
 }

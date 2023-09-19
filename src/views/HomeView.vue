@@ -3,13 +3,13 @@ import { ref, onMounted, computed, watch } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
 import { calculateDisplayedPages } from '../functions/pagination.js';
 
-const limit = 20; // Número de resultados por página
+const limit = 20;
 const search = ref('');
 const currentPage = ref(1);
 let totalPokemonCount = 0;
 const allPokemons = ref([]);
 const displayedPages = calculateDisplayedPages(allPokemons, currentPage, limit);
-const selectedOption = ref('ALL...'); // Defina selectedOption aqui
+const selectedOption = ref('ALL...'); 
 
 const displayedPokemons = computed(() => {
   const startIndex = (currentPage.value - 1) * limit;
@@ -40,10 +40,9 @@ const loadPage = (page) => {
   currentPage.value = page;
 };
 
-// Use o watch aqui após a definição de selectedOption
 watch(selectedOption, (newValue, oldValue) => {
   if (newValue !== oldValue) {
-    currentPage.value = 1; // Define a página atual de volta para 1
+    currentPage.value = 1; 
     if (newValue === 'ALL...') {
       loadAllPokemon();
     } else {
@@ -136,6 +135,10 @@ const loadPokemonByType = async (type) => {
 </template>
 
 <style>
+.active{
+  background-color: #bdbdbd;
+}
+
 .pagination {
   display: flex;
   list-style: none;
@@ -145,7 +148,6 @@ const loadPokemonByType = async (type) => {
   overflow-x: auto;
   max-width: 100%;
   flex-wrap: wrap;
-  /* Usar flex-wrap para ajustar em telas estreitas */
 }
 
 .pagination li {
