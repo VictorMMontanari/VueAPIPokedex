@@ -56,15 +56,8 @@ const loadPokemonByType = async (type) => {
     const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
     const data = await response.json();
     const pokemonList = data.pokemon.map((entry) => entry.pokemon);
-    
-    if (pokemonList.length > 493) {
-      const limitedPokemonList = pokemonList.slice(0, 493);
-      totalPokemonCount = limitedPokemonList.length;
-      allPokemons.value = limitedPokemonList;
-    } else {
-      totalPokemonCount = pokemonList.length;
-      allPokemons.value = pokemonList;
-    }
+    totalPokemonCount = pokemonList.length;
+    allPokemons.value = pokemonList;
   } catch (error) {
     console.error('Erro ao carregar os Pokémon do tipo', type, error);
   }
@@ -117,15 +110,13 @@ const loadPokemonByType = async (type) => {
       </div>
       <div class="conteudo3">
         <div class="pagination">
-          <button @click="loadPage(currentPage - 1)" :disabled="currentPage === 1">
+          <button class="anterior" @click="loadPage(currentPage - 1)" :disabled="currentPage === 1">
             Anterior
           </button>
-
           <template v-for="page in displayedPages">
-            <button @click="loadPage(page)" :class="{ active: page === currentPage }">{{ page }}</button>
+            <button @click="loadPage(page)" :class="{ active: page === currentPage }" id="num">{{ page }}</button>
           </template>
-
-          <button @click="loadPage(currentPage + 1)" :disabled="currentPage * limit >= totalPokemonCount">
+          <button class="proximo" @click="loadPage(currentPage + 1)" :disabled="currentPage * limit >= totalPokemonCount">
             Próximo
           </button>
         </div>
@@ -135,6 +126,40 @@ const loadPokemonByType = async (type) => {
 </template>
 
 <style>
+
+.anterior {
+  position: relative;
+  display: block;
+  font-size: var(--bs-pagination-font-size);
+  color: var(--bs-pagination-color);
+  border-top-left-radius: var(--bs-pagination-border-radius);
+  border-bottom-left-radius: var(--bs-pagination-border-radius);
+  border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.proximo {
+  position: relative;
+  display: block;
+  font-size: var(--bs-pagination-font-size);
+  color: var(--bs-pagination-color);
+  border-top-right-radius: var(--bs-pagination-border-radius);
+  border-bottom-right-radius: var(--bs-pagination-border-radius);
+  border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#num {
+  position: relative;
+  display: block;
+  padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+  font-size: var(--bs-pagination-font-size);
+  color: var(--bs-pagination-color);
+  text-decoration: none;
+  border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 .active{
   background-color: #bdbdbd;
 }
@@ -150,28 +175,6 @@ const loadPokemonByType = async (type) => {
   flex-wrap: wrap;
 }
 
-.pagination li {
-  margin: 5px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.pagination li.active {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.pagination li.dots {
-  padding: 5px 10px;
-  border: none;
-  background-color: transparent;
-  white-space: nowrap;
-  display: none;
-}
-
 @media (max-width: 400px) {
   .pagination li {
     margin: 2px;
@@ -180,7 +183,7 @@ const loadPokemonByType = async (type) => {
     /* Reduz o tamanho da fonte em telas pequenas */
   }
 
-  .pagination li.dots {
+  .pagination  {
     display: block;
   }
 
