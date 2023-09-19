@@ -1,5 +1,4 @@
 
-// pagination.js
 import { computed } from 'vue';
 
 export function calculateDisplayedPages(allPokemons, currentPage, limit) {
