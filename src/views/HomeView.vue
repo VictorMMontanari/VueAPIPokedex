@@ -175,7 +175,7 @@ const loadPokemonByType = async (type) => {
   flex-wrap: wrap;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 350px) {
   .pagination li {
     margin: 2px;
     padding: 2px 5px;
