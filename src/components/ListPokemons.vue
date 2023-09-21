@@ -3,6 +3,7 @@ import { computed, ref, onMounted } from "vue";
 import { formatName, getTypeStyle, formatType } from "../functions/formatName";
 import { selectedOption } from "../functions/TypePK.js";
 
+
 const props = defineProps(["name", "url"]);
 
 const urlParts = props.url.split("/");
@@ -47,68 +48,62 @@ function filterPokemonByType() {
 
 <template>
   <div class="col-12 col-sm-4 col-md-3 col-lg-3">
-    <div class="card mb-3" style="height: 100%;" v-if="filterPokemonByType()">
-      <h5 class="th4">{{ formatName(props.name) }}</h5>
-      <img
-        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
-        class="card-img" alt="..." />
-      <div class="card-body text-center">
-        <div class="tipos">
-          <span v-for="typeName in getTypes" :key="typeName" :class="['tipo', getTypeStyle(typeName)]">
-            {{ formatType(typeName) }}
-          </span>
-        </div>
-        <div class="container text-center">
-          <div class="row">
-            <div class="col">
-              <img
-                :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${idpk}.gif`"
-                class="" width="39" alt="..." />
-            </div>
-            <div class="col">
-              <h6 class="th4">{{ `#${idpk.toString().padStart(3, '0')}` }}</h6>
-            </div>
-            <div class="col">
-              <img
-                :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${idpk}.gif`"
-                class="" width="39" alt="..." />
-            </div>
+    <a class="link" :data-bs-target="`#exampleModal-${idpk}`" data-bs-toggle="modal">
+      <div class="card mb-3" style="height: 100%;" v-if="filterPokemonByType()">
+        <h5 class="th4">{{ formatName(props.name) }}</h5>
+        <img
+          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
+          class="card-img" alt="..." />
+        <div class="card-body text-center">
+          <div class="tipos">
+            <span v-for="typeName in getTypes" :key="typeName" :class="['tipo', getTypeStyle(typeName)]">
+              {{ formatType(typeName) }}
+            </span>
           </div>
-
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" :data-bs-target="`#exampleModal-${idpk}`" data-bs-toggle="modal">
-            Launch demo modal
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" :id="`exampleModal-${idpk}`" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">{{ formatName(props.name) }}</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="row">
-                    <div class="col">
-                      <img
-                        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
-                        class="card-img" alt="..." />
-
-                    </div>
-                    <div class="col">
-                      <img
-                        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
-                        class="card-img" alt="..." />
-
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                </div>
+          <div class="container text-center">
+            <div class="row">
+              <div class="col">
+                <img
+                  :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${idpk}.gif`"
+                  class="" width="39" alt="..." />
+              </div>
+              <div class="col">
+                <h6 class="th4">{{ `#${idpk.toString().padStart(3, '0')}` }}</h6>
+              </div>
+              <div class="col">
+                <img
+                  :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${idpk}.gif`"
+                  class="" width="39" alt="..." />
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Modal -->
+    <div class="modal fade" :id="`exampleModal-${idpk}`" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ formatName(props.name) }}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <img
+                  :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
+                  class="card-img" alt="..." />
+              </div>
+              <div class="col">
+                <img
+                  :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${idpk}.png`"
+                  class="card-img" alt="..." />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
           </div>
         </div>
       </div>
@@ -117,6 +112,12 @@ function filterPokemonByType() {
 </template>
 
 <style>
+.link {
+  display: inline;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .th4 {
   margin: 0px;
   color: #000000;
