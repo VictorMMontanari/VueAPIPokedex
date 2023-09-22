@@ -50,7 +50,7 @@ function filterPokemonByType() {
 <template>
   <div class="col-12 col-sm-4 col-md-3 col-lg-3">
     <a class="link" :data-bs-target="`#exampleModal-${idpk}`" data-bs-toggle="modal">
-      <div class="card mb-3" style="height: 100%;" v-if="filterPokemonByType()">
+      <div class="card mb-3 hover" style="height: 100%;" v-if="filterPokemonByType()">
         <h5 class="th4">{{ formatName(props.name) }}</h5>
         <img
           :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
@@ -106,6 +106,14 @@ function filterPokemonByType() {
   display: inline;
   text-decoration: none;
   cursor: pointer;
+}
+.hover:hover {
+  position: relative;
+  padding: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .th4 {
