@@ -2,7 +2,7 @@
 import { computed, ref, onMounted } from "vue";
 import { formatName, getTypeStyle, formatType } from "../functions/formatName";
 import { selectedOption } from "../functions/TypePK.js";
-
+import PokemonInfo from "./PokemonInfo.vue";
 
 const props = defineProps(["name", "url"]);
 
@@ -44,6 +44,7 @@ function filterPokemonByType() {
     return types.includes(selectedType);
   }
 }
+
 </script>
 
 <template>
@@ -90,18 +91,7 @@ function filterPokemonByType() {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="row">
-              <div class="col">
-                <img
-                  :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
-                  class="card-img" alt="..." />
-              </div>
-              <div class="col">
-                <img
-                  :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${idpk}.png`"
-                  class="card-img" alt="..." />
-              </div>
-            </div>
+            <PokemonInfo :idpk="idpk" :getTypes="getTypes" :pokemonDetails="pokemonDetails"/>
           </div>
           <div class="modal-footer">
           </div>
