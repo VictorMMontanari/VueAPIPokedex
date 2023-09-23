@@ -108,13 +108,61 @@ function filterPokemonByType() {
   cursor: pointer;
 }
 .hover:hover {
-  position: relative;
-  padding: 10px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  box-shadow: 0 0 6px 5px #ddd;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
 }
+ 
+selector{
+--first-color: #FBB714;
+--second-color: #3c67e3;
+--third-color: #4e00c2;
+}
+@property --rotate {
+syntax: "<angle>";
+initial-value: 132deg;
+inherits: false;
+}
+selector::before, selector::after{
+opacity: 0;
+content: "";
+transition: all 0.5s ease-in-out;
+}
+selector::before, selector::after{
+position: absolute;
+z-index: -1;
+background-image: linear-gradient(
+var(--rotate)
+, var(--first-color), var(--second-color) 43%, var(--third-color));
+animation: spin 2.5s linear infinite;
+opacity: 1;
+}
+selector::before {
+width: 104%;
+height: 104%;
+border-radius: 8px;
+top: -2%;
+left: -2%;
+}
+selector::after {
+top: 0;
+left: 0;
+right: 0;
+height: 100%;
+width: 100%;
+transform: scale(0.9);
+filter: blur(70px);
+}
+@keyframes spin {
+0% {
+--rotate: 0deg;
+}
+100% {
+--rotate: 360deg;
+}
+}
+
+/* <-------> */
 
 .th4 {
   margin: 0px;

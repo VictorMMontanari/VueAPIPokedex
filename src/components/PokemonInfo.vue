@@ -27,23 +27,33 @@ const getstats = computed(() => {
   <div>
     <div class="row">
       <div class="col">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Normal Sprite</h1>
+      </div>
+      <div class="col">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Shiny Sprite</h1>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 1rem;">
+      <div class="col">
         <img
           :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idpk}.png`"
-          class="card-img" alt="..." />
+          class="card-img img" alt="..." />
       </div>
       <div class="col">
         <img
           :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${idpk}.png`"
-          class="card-img" alt="..." />
+          class="card-img img" alt="..." />
       </div>
     </div>
   </div>
+  <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-bottom: 10px;">Type</h1>
   <div class="tipos">
     <span v-for="typeName in getTypes" :key="typeName" :class="['tipo', getTypeStyle(typeName)]">
       {{ formatType(typeName) }}
     </span>
   </div>
-  <div class="container text-center" style="margin-top: 10px;">
+  <div style="margin-top: 10px;">
+    <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-bottom: 10px;">Base stats</h1>
     <div class="row">
       <div class="col-3 mb-2">
         <b>HP:</b>
@@ -130,3 +140,13 @@ const getstats = computed(() => {
     </div>
   </div>
 </template>
+
+<style>
+
+.img {
+    display: inline-block;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.041);
+    border-radius: 8px;
+    background-color: rgba(85, 84, 84, 0.13);
+}
+</style>
