@@ -46,14 +46,19 @@ const getstats = computed(() => {
       </div>
     </div>
   </div>
-  <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-bottom: 10px;">Type</h1>
+  <div class="titlebottom">
+    <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-bottom: 10px;">Type</h1>
+  </div>
+  
   <div class="tipos">
     <span v-for="typeName in getTypes" :key="typeName" :class="['tipo', getTypeStyle(typeName)]">
       {{ formatType(typeName) }}
     </span>
   </div>
   <div style="margin-top: 10px;">
-    <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-bottom: 10px;">Base stats</h1>
+    <div class="titlebottom">
+      <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-bottom: 10px;">Base Stats</h1>
+    </div>
     <div class="row">
       <div class="col-3 mb-2">
         <b>HP:</b>
@@ -62,7 +67,7 @@ const getstats = computed(() => {
         <div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0"
           aria-valuemax="100" style="margin-top: 6px;">
           <div class="progress-bar progress-bar-striped"
-            :style="{ width: getstats.length > 0 ? getstats[0].base_stat + 150/2 + 'px' : '0%' }" title="Hp">
+            :style="{ width: getstats.length > 0 ? getstats[0].base_stat + 150 / 2 + 'px' : '0%' }" title="Hp">
             <b v-if="getstats.length > 0">{{ getstats[0].base_stat }}</b>
           </div>
         </div>
@@ -76,7 +81,7 @@ const getstats = computed(() => {
         <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0"
           aria-valuemax="100" style="margin-top: 6px;">
           <div class="progress-bar progress-bar-striped bg-success"
-            :style="{ width: getstats.length > 0 ? getstats[1].base_stat + 150/2 + 'px' : '0%' }" title="attack">
+            :style="{ width: getstats.length > 0 ? getstats[1].base_stat + 150 / 2 + 'px' : '0%' }" title="attack">
             <b v-if="getstats.length > 0">{{ getstats[1].base_stat }}</b>
           </div>
         </div>
@@ -90,7 +95,7 @@ const getstats = computed(() => {
         <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0"
           aria-valuemax="100" style="margin-top: 6px;">
           <div class="progress-bar progress-bar-striped bg-info"
-            :style="{ width: getstats.length > 0 ? getstats[2].base_stat + 150/2 + 'px' : '0%' }" title="defense">
+            :style="{ width: getstats.length > 0 ? getstats[2].base_stat + 150 / 2 + 'px' : '0%' }" title="defense">
             <b v-if="getstats.length > 0">{{ getstats[2].base_stat }}</b>
           </div>
         </div>
@@ -104,7 +109,7 @@ const getstats = computed(() => {
         <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0"
           aria-valuemax="100" style="margin-top: 6px;">
           <div class="progress-bar progress-bar-striped bg-warning"
-            :style="{ width: getstats.length > 0 ? getstats[3].base_stat + 150/2 + 'px' : '0%' }" title="special-attack">
+            :style="{ width: getstats.length > 0 ? getstats[3].base_stat + 150 / 2 + 'px' : '0%' }" title="special-attack">
             <b v-if="getstats.length > 0">{{ getstats[3].base_stat }}</b>
           </div>
         </div>
@@ -118,7 +123,7 @@ const getstats = computed(() => {
         <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0"
           aria-valuemax="100" style="margin-top: 6px;">
           <div class="progress-bar progress-bar-striped bg-danger"
-            :style="{ width: getstats.length > 0 ? getstats[4].base_stat + 150/2 + 'px' : '0%' }" title="special-defense">
+            :style="{ width: getstats.length > 0 ? getstats[4].base_stat + 150 / 2 + 'px' : '0%' }" title="special-defense">
             <b v-if="getstats.length > 0">{{ getstats[4].base_stat }}</b>
           </div>
         </div>
@@ -132,7 +137,7 @@ const getstats = computed(() => {
         <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0"
           aria-valuemax="100" style="margin-top: 6px;">
           <div class="progress-bar progress-bar-striped bg-dark"
-            :style="{ width: getstats.length > 0 ? getstats[5].base_stat + 150/2 + 'px' : '0%' }" title="speed">
+            :style="{ width: getstats.length > 0 ? getstats[5].base_stat + 150 / 2 + 'px' : '0%' }" title="speed">
             <b v-if="getstats.length > 0">{{ getstats[5].base_stat }}</b>
           </div>
         </div>
@@ -142,11 +147,16 @@ const getstats = computed(() => {
 </template>
 
 <style>
-
 .img {
-    display: inline-block;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.041);
-    border-radius: 8px;
-    background-color: rgba(85, 84, 84, 0.13);
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.041);
+  border-radius: 8px;
+  background-color: rgba(85, 84, 84, 0.13);
+}
+
+.titlebottom {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.041);
+  border-radius: 8px;
+  background-color: rgba(85, 84, 84, 0.13);
 }
 </style>
