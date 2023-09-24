@@ -5,10 +5,10 @@ Site: [https://pokeapi.co/docs/v2](https://pokeapi.co/docs/v2)
 
 # Descrição
 
-Curso: SUPERIOR DE TECNOLOGIA EM ANALISE E DESENVOLVIMENTO DE SISTEMAS. 
-Matéria: DESENVOLV DE APLICACOES P/ A INTERNET 04A-2023/2.
-Aluno: Victor Marinelli Montanari RA: 1950936.
-Link GitHub: [https://github.com/VictorMMontanari/VueAPIPokedex](https://github.com/VictorMMontanari/VueAPIPokedex).
+Curso: SUPERIOR DE TECNOLOGIA EM ANALISE E DESENVOLVIMENTO DE SISTEMAS. <br>
+Matéria: DESENVOLV DE APLICACOES P/ A INTERNET 04A-2023/2. <br>
+Aluno: Victor Marinelli Montanari RA: 1950936. <br>
+Link GitHub: [https://github.com/VictorMMontanari/VueAPIPokedex](https://github.com/VictorMMontanari/VueAPIPokedex). <br>
 Objetivo: Criar uma pokedex com utilizando o máximo de informação da API. Com objetivo de estudar como funciona a api e treinar a criação de um front-end responsivo suando bootstrap. 
 
 # Como funciona
