@@ -12,8 +12,10 @@ Link GitHub: [https://github.com/VictorMMontanari/VueAPIPokedex](https://github.
 Objetivo: Criar uma pokedex com utilizando o máximo de informação da API. Com objetivo de estudar como funciona a api e treinar a criação de um front-end responsivo suando bootstrap. 
 
 # Como funciona
-
-
+Aqui explicarei como funciona a Pokedex
+## Filtro Pokemon
+![Filtro Pokemon](./img/filtro_nome.png)
+![Filtro Pokemon](./img/filtro_pokemon.png)
 
 ## Configuração Recomendada do IDE
 
