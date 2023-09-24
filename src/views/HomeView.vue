@@ -9,7 +9,7 @@ const currentPage = ref(1);
 let totalPokemonCount = 0;
 const allPokemons = ref([]);
 const displayedPages = calculateDisplayedPages(allPokemons, currentPage, limit);
-const selectedOption = ref('ALL...'); 
+const selectedOption = ref('ALL...');
 
 const displayedPokemons = computed(() => {
   const startIndex = (currentPage.value - 1) * limit;
@@ -42,7 +42,7 @@ const loadPage = (page) => {
 
 watch(selectedOption, (newValue, oldValue) => {
   if (newValue !== oldValue) {
-    currentPage.value = 1; 
+    currentPage.value = 1;
     if (newValue === 'ALL...') {
       loadAllPokemon();
     } else {
@@ -102,8 +102,8 @@ const loadPokemonByType = async (type) => {
         <div class="col">
           <div class="card text-center">
             <div class="card-body row g-3">
-              <ListPokemons v-for="pokemon in displayedPokemons" :key="pokemon.name" :name="pokemon.name" 
-            :url="pokemon.url"/>
+              <ListPokemons v-for="pokemon in displayedPokemons" :key="pokemon.name" :name="pokemon.name"
+                :url="pokemon.url" />
             </div>
           </div>
         </div>
@@ -126,7 +126,6 @@ const loadPokemonByType = async (type) => {
 </template>
 
 <style>
-
 .anterior {
   position: relative;
   display: block;
@@ -135,7 +134,7 @@ const loadPokemonByType = async (type) => {
   border-top-left-radius: var(--bs-pagination-border-radius);
   border-bottom-left-radius: var(--bs-pagination-border-radius);
   border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .proximo {
@@ -146,7 +145,7 @@ const loadPokemonByType = async (type) => {
   border-top-right-radius: var(--bs-pagination-border-radius);
   border-bottom-right-radius: var(--bs-pagination-border-radius);
   border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 #num {
@@ -157,10 +156,10 @@ const loadPokemonByType = async (type) => {
   color: var(--bs-pagination-color);
   text-decoration: none;
   border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.active{
+.active {
   background-color: #bdbdbd;
 }
 
@@ -183,7 +182,7 @@ const loadPokemonByType = async (type) => {
     /* Reduz o tamanho da fonte em telas pequenas */
   }
 
-  .pagination  {
+  .pagination {
     display: block;
   }
 
@@ -191,4 +190,5 @@ const loadPokemonByType = async (type) => {
   .pagination li:not(.active):not(.dots) {
     display: none;
   }
-}</style>
+}
+</style>
