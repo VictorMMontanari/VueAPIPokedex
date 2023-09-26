@@ -37,7 +37,11 @@ const loadAllPokemon = async () => {
 };
 
 const loadPage = (page) => {
-  currentPage.value = page;
+  if (page === '...') {
+    currentPage.value += 1;
+  } else {
+    currentPage.value = page;
+  }
 };
 
 watch(selectedOption, (newValue, oldValue) => {
