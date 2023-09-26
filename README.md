@@ -13,9 +13,21 @@ Objetivo: Criar uma pokedex com utilizando o máximo de informação da API. Com
 
 # Como funciona
 Aqui explicarei como funciona a Pokedex
+
 ## Filtro Pokemon
 ![Filtro Pokemon](./img/filtro_nome.png)
 ![Filtro Pokemon](./img/filtro_pokemon.png)
+
+## Filtro por tipo
+![Filtro Pokemon](./img/filtro_tipoPK.png)
+![Filtro Pokemon](./img/filtro_tipo.png)
+
+## Paginação
+![Filtro Pokemon](./img/Paginacao.png)
+
+## Informação Individual do Pokemon
+![Filtro Pokemon](./img/infoPK.png)
+![Filtro Pokemon](./img/info.png)
 
 ## Configuração Recomendada do IDE
 
