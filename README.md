@@ -9,6 +9,7 @@ Curso: SUPERIOR DE TECNOLOGIA EM ANALISE E DESENVOLVIMENTO DE SISTEMAS. <br>
 Matéria: DESENVOLV DE APLICACOES P/ A INTERNET 04A-2023/2. <br>
 Aluno: Victor Marinelli Montanari RA: 1950936. <br>
 Link GitHub: [https://github.com/VictorMMontanari/VueAPIPokedex](https://github.com/VictorMMontanari/VueAPIPokedex). <br>
+Link GitHub Pages: [https://victormmontanari.github.io/VueAPIPokedex/](https://victormmontanari.github.io/VueAPIPokedex/). <br>
 Objetivo: Criar uma pokedex com utilizando o máximo de informação da API. Com objetivo de estudar como funciona a api e treinar a criação de um front-end responsivo suando bootstrap. 
 
 # Como funciona
